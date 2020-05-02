@@ -17,9 +17,8 @@ jobs:
         run: sudo service mysql start
       - name: Create test database
         run: |
-          name: chmod permissions
-          command: chmod +x ./gradlew
           mysql -uroot -proot < databases/create_databases.sql
+          chmod +x ./gradlew
           ./gradlew testMigrate
       - name: Build with Gradle
         run: ./gradlew clean build
